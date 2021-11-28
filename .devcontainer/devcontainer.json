@@ -36,7 +36,7 @@
 
     },
     "runArgs": [
-        // "--network=host",
+        "--network=host",
         // "--cap-add=NET_RAW",
         // "--cap-add=NET_ADMIN"
     ],
