@@ -35,6 +35,7 @@
         "omnisharp.autoStart": false
 
     },
+    
     "runArgs": [
         "--network=host",
         // "--cap-add=NET_RAW",
