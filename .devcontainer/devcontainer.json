@@ -1,0 +1,72 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.154.0/containers/ubuntu
+{
+    "name": "main",
+    // "build": {
+    //     "dockerfile": "Dockerfile",
+    //     "args": { "VARIANT": "focal" }
+    // },
+    "image": "ahoenxk3/dev-main",
+    "workspaceFolder": "/workspaces/repository-template",
+
+    "settings": { 
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash",
+                "icon": "terminal-bash"
+            },
+            "zsh": {
+                "path": "zsh"
+            },
+            "fish": {
+                "path": "fish"
+            },
+            "tmux": {
+                "path": "tmux",
+                "icon": "terminal-tmux"
+            },
+            "pwsh": {
+                "path": "pwsh",
+                "icon": "terminal-powershell",
+                "args": ["-nol"]
+            }
+        },
+        "terminal.integrated.defaultProfile.linux": "pwsh",
+        "omnisharp.autoStart": false
+
+    },
+    "runArgs": [
+        // "--network=host",
+        // "--cap-add=NET_RAW",
+        // "--cap-add=NET_ADMIN"
+    ],
+    "containerEnv": {
+        "DOCKER_HOST": "unix:///var/run/docker-host.sock"
+    },
+    "mounts": [
+        "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
+        // "source=${localWorkspaceFolder}/../../,target=/workspaces/repo-this,type=bind",
+        // "source=${localWorkspaceFolder}/../../../repo-other,target=/workspaces/repo-other,type=bind",
+    ],
+
+    // Add the IDs of extensions you want installed when the container is created.
+    "extensions": [
+        "alefragnani.bookmarks",
+        "eamodio.gitlens",
+        "metaseed.metago",
+        "mhutchie.git-graph",
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-python.python",
+        "sleistner.vscode-fileutils",
+    ],
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "postCreateCommand": "/usr/bin/pwsh -nop -nol -f /devcontainer/docker-context/postCreate.ps1",
+
+    // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    // "remoteUser": "vscode"
+}
